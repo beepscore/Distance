@@ -168,7 +168,4 @@
     lastUpdate.text = [inputFormatter stringFromDate:date];   
 }
 
-
-
-
 @end
