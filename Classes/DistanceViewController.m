@@ -115,13 +115,21 @@
            fromLocation:(CLLocation *)oldLocation {
     // if we have a valid location, and it's within 20 meters then stop
     // updating location, but turn it back on in 60 seconds.
+//    if (newLocation.horizontalAccuracy > 0.0f 
+//        && newLocation.horizontalAccuracy < 20.0f) {
+//        if (self.locations.count > 3) {
+//            [self.locationManager stopUpdatingLocation];
+//            [self.locationManager performSelector:@selector(startUpdatingLocation)
+//                                       withObject:nil
+//                                       afterDelay:60.0f];
+//        }
     if (newLocation.horizontalAccuracy > 0.0f 
-        && newLocation.horizontalAccuracy < 20.0f) {
-        if (self.locations.count > 3) {
+        && newLocation.horizontalAccuracy < 100.0f) {
+        if (self.locations.count > 2) {
             [self.locationManager stopUpdatingLocation];
             [self.locationManager performSelector:@selector(startUpdatingLocation)
                                        withObject:nil
-                                       afterDelay:60.0f];
+                                       afterDelay:10.0f];
         }
         [self.locations addObject:newLocation];
         [self updateDisplay];
