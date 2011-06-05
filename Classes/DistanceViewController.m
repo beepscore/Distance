@@ -75,8 +75,6 @@
 
 // Release IBOutlets in setView.  
 // Ref http://developer.apple.com/iPhone/library/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmNibObjects.html
-//
-// http://moodle.extn.washington.edu/mod/forum/discuss.php?d=3162
 - (void)setView:(UIView *)aView {
     
     if (!aView) { // view is being set to nil        
@@ -145,7 +143,7 @@
             // continue skips the rest of the for loop
             continue;
         }
-        totalDistanceTraveled += fabs([location getDistanceFrom:oldLocation]);
+        totalDistanceTraveled += fabs([location distanceFromLocation:oldLocation]);
         oldLocation = location;
     }
     return totalDistanceTraveled;
